@@ -1,28 +1,29 @@
-pipeline{
+pipeline {
     agent any
-    tools {nodejs "Node"}
+    tools { nodejs "node" }
     stages {
-        stage('Clone Repository'){
-            steps{
+        stage('Clone Repository') {
+            steps {
                 git branch: 'main',
-                    url: 'https://github.com/MIRTAHAALI/express_server_for_flutter_app_testing.git'
+                    url: 'https://github.com/hvspeedum/sampleNodePipeline.git'
             }
         }
         
-        stage('Install Dependencies'){
+        stage('Install Dependencies') {
             steps {
-                bat 'npm install'
-            }
-        }
-         stage('Install pm2'){
-            steps {
-                bat 'npm install pm2 -g'
+                sh 'npm install'
             }
         }
         
-        stage('Deploy'){
+        stage('Install pm2') {
             steps {
-                bat 'pm2 startOrRestart pm2.config.json'
+                sh 'npm install pm2 -g'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'pm2 startOrRestart pm2.config.json'
             }
         }
     }

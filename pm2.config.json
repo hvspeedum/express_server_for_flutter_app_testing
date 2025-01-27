@@ -2,7 +2,13 @@
   "apps": [
     {
       "name": "MyApp",
-      "script": "server.js"
+      "script": "server.js",
+
+/*edit 1 */
+      "env": {
+        "PORT": 3000
+
+      }
     }
   ]
 }
